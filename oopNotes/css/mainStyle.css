@@ -1,0 +1,111 @@
+body{
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+#container{
+  margin: 0 auto;
+  padding: 0 auto;
+  text-align: center;
+  background-color: #f0f7f1;
+}
+
+#container > header{
+  vertical-align: middle;
+}
+
+#mainTop{
+  height:auto;
+}
+
+#mainLogo{
+  float: left;
+  padding: 20px;
+}
+
+#mainLogo > h1 {
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+#mainInfo{
+  float: right;
+  padding-right: 30px;
+  padding-top: 40px;
+}
+
+#mainMenus{
+  clear: both;
+}
+
+#mainMenus > ul {
+          /*상 우 하 좌*/
+  margin: 5px 0 0 0;
+  padding: 10px 0 0 10px;
+  text-align: left;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  height: 30px;
+}
+
+#mainMenus > ul > li{
+  list-style: none;
+  display: inline-block;
+}
+
+body > section {
+  display: table;
+  width: 100%;
+  table-layout:fixed;
+}
+
+#subMenuList{
+  display: table-cell;
+  width: 15%;
+}
+
+#subMenuList{
+  float: left;
+  border-right: 1px solid black;
+  height: 800px;
+  padding: 20px;
+}
+
+#subMenuList{
+
+}
+
+#subMenuList > h3{
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+#subMenuList > ul{
+  margin: 0 ;
+  padding: 0 ;
+}
+
+#subMenuList > ul > li{
+  list-style: none;
+}
+
+#contents{
+  display: inline-block;
+  text-align: left;
+  width: 80%;
+}
+
+#contents > div{
+  margin-top: 5px;
+  /* width: 80; */
+}
+
+#postTitle{
+  width: 100%;
+}
+
+footer{
+  clear: both;
+  border-top: 1px solid black;
+  padding : 20px;
+}
