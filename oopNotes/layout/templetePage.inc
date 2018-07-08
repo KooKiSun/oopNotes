@@ -44,7 +44,7 @@ class page extends MainPage
     $result .= "    <title>".$this->title."</title>\n";
     $result .= "    <link rel=\"stylesheet\" type=\"text/css\" href=\"".$this->link."\"/>\n";
     $result .= "  </head>\n<body>\n <div id=\"container\">\n";
-    $result .= $this->MainHeader();  // 헤더영역
+    $result .= $this->MainHeader();  // 헤더 영역
     $result .= $this->MainSection(); // 본문 영역
     $result .= $this->MainFooter();  // 하단 푸터 영역
 		$result .= "</div>\n</body>\n</html>";
@@ -108,7 +108,7 @@ class page extends MainPage
 
   protected function MainFooter()
   {
-    $result = "<footer>Copyright &copy; BBCompany - 무단 배포 금지.</footer>\n";
+    $result = "<footer>Copyright &copy; BBCompany - 무단 배포 금지.</footer>";
     return $result;
   }
 }
