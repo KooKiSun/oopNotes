@@ -3,7 +3,7 @@
  * 기본적인 DBConnect를 이 클레스에 적용하고 수정 할 수 없도록 추상화 클레스를 사용한다.
  * 2018.07.08
  */
-class DBConfig
+abstract class DBConfig
 {
   //mysqli 기능을 이용한 DataBase 접속 및 Data처리를 진행한다.
   //DBConnect를 상속받아 자녀 클레스에서 실제 내용을 작성할 수 있도록 추상화 클레스를 사용.
@@ -15,7 +15,7 @@ class DBConfig
   {
     $result = $this->DBCon();
     $result = $this->DBSql();
-
+    
     return $result;
   }
 
@@ -31,6 +31,7 @@ class DBFnc extends DBConfig
   protected function DBCon() //DataBase 연결
   {
     $conn = mysqli_connect('127.0.0.1', 'root', '000000', 'Koos');
+    return $conn;
   }
 
   protected function DBSql() //sql 받아 결과 값을 Return 해준다.
@@ -38,7 +39,4 @@ class DBFnc extends DBConfig
     return mysqli_query($conn,mysqli_real_escape_string($SqlInfo));
   }
 }
-
-
-
  ?>
