@@ -1,0 +1,22 @@
+create database koos;
+
+CREATE TABLE `kooNotes` (
+	`NoteId` INT NOT NULL AUTO_INCREMENT,
+	`NoteTitle` VARCHAR(50) NOT NULL,
+	`NoteContents` TEXT NULL,
+	`NoteCUser` VARCHAR(10) NOT NULL,
+	`NoteCDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (`NoteId`)
+)
+COMMENT='개발 노트'
+COLLATE='utf8_general_ci'
+;
+
+insert into kooNotes(NoteTitle, NoteContents, NoteCUser)
+Values('koo타이틀', '테스트', 'koo');
+
+insert into kooNotes(NoteTitle, NoteContents, NoteCUser)
+Values('Jiwoo타이틀 입력!', '사랑해~', 'Jiwoo');
+
+insert into kooNotes(NoteTitle, NoteContents, NoteCUser)
+Values('밤비 타이틀 입력', '왈!', 'BB');
