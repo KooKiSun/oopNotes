@@ -7,11 +7,16 @@ $base = new Page; // MainPage class 객체를 생성
 
 $base->link = "./css/mainStyle.css";
 
-echo $base->Render(); //위의 변수들이 입력된 객체를 출력
-
 $DB = new DBFnc; // DBConfig class 객체를 생성
-$DB->$SqlInfo = "Select * From KooNotes";
-$DB->DBResult();
-var_dump($DB->DBResult());
-echo $DB->DBResult();
+$DB->SqlInfo = "Select * From mainMenus";
+
+$Result = $DB->DBResult();
+
+while ($row = mysqli_fetch_array($Result)) {
+  $MenuId = htmlspecialchars($row['MenuId']);
+  $MenuName = htmlspecialchars($row['MenuName']);
+  $base->MHeaderList = $base->MHeaderList."<li><a href=mainSub.php?MenuId=\"{$row['MenuId']}\"&MenuName=\"{$row['MenuName']}\">{$row['MenuName']} | </a></li>\n";
+  };
+
+echo $base->Render(); //위의 변수들이 입력된 객체를 출력
 ?>

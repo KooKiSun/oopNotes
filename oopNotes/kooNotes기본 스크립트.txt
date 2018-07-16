@@ -1,0 +1,89 @@
+create database koos;
+
+CREATE TABLE `kooNotes` (
+	`NoteId` INT NOT NULL AUTO_INCREMENT,
+	`NoteTitle` VARCHAR(50) NOT NULL,
+	`NoteContents` TEXT NULL,
+	`NoteCUser` VARCHAR(10) NOT NULL,
+	`NoteCDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (`NoteId`)
+)
+COMMENT='개발 노트'
+COLLATE='utf8_general_ci'
+;
+
+insert into kooNotes(NoteTitle, NoteContents, NoteCUser)
+Values('koo타이틀', '테스트', 'koo');
+
+insert into kooNotes(NoteTitle, NoteContents, NoteCUser)
+Values('Jiwoo타이틀 입력!', '사랑해~', 'Jiwoo');
+
+insert into kooNotes(NoteTitle, NoteContents, NoteCUser)
+Values('밤비 타이틀 입력', '왈!', 'BB');
+
+
+CREATE TABLE `mainmenus` (
+	`MenuId` INT(11) NOT NULL AUTO_INCREMENT COMMENT '메인 메뉴 ID',
+	`MenuName` VARCHAR(50) NOT NULL COMMENT '메인 메뉴 명',
+	`MenuAuthority` VARCHAR(20) NULL DEFAULT NULL COMMENT '메인 메뉴 권한',
+	`MenuCUserId` VARCHAR(20) NOT NULL COMMENT '메인 메뉴를 만든 사용자 ID',
+	`MenuCDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '메인 메뉴 생성 시간 yyyy-mm-dd 00:00:00',
+	`MenuMDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '메인 메뉴 생성 시간 yyyy-mm-dd 00:00:00',
+	PRIMARY KEY (`MenuId`)
+)
+COMMENT='메인메뉴'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=4;
+
+
+CREATE TABLE `posts` (
+	`PostId` INT(11) NOT NULL AUTO_INCREMENT COMMENT '게시글 ID',
+	`PostSubId` INT(11) NOT NULL COMMENT '게시글이 속한 서브 메뉴 ID',
+	`PostUserId` VARCHAR(20) NOT NULL COMMENT '게시글 작성자 ID',
+	`PostTitle` VARCHAR(255) NOT NULL COMMENT '게시글 제목',
+	`PostContents` LONGTEXT NOT NULL COMMENT '게시글 내용',
+	`PostFileIds` INT(11) NULL DEFAULT NULL COMMENT '게시글에 저장한 파일들의 ID',
+	`PostCDate` DATETIME NOT NULL COMMENT '게시글 생성 시간 yyyy-mm-dd 00:00:00',
+	`PostMdate` DATETIME NOT NULL COMMENT '게시글 수정 시간 yyyy-mm-dd 00:00:00',
+	`PostPrivate` CHAR(1) NULL DEFAULT 'N' COMMENT '게시글 비공개 여부',
+	`PostPw` VARCHAR(255) NULL DEFAULT NULL COMMENT '비공개 게시글에 사용하는 비밀번호',
+	PRIMARY KEY (`PostId`)
+)
+COMMENT='게시글 정보 테이블'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+CREATE TABLE `submenus` (
+	`MenuId` INT(11) NOT NULL COMMENT '메인 메뉴 ID',
+	`SubId` INT(11) NOT NULL AUTO_INCREMENT COMMENT '서브 메뉴 ID',
+	`SubName` VARCHAR(50) NOT NULL COMMENT '서브 메뉴 명',
+	`SubGroup` VARCHAR(10) NULL DEFAULT NULL COMMENT '서브 메뉴 그룹',
+	`SubAuthority` VARCHAR(20) NULL DEFAULT NULL COMMENT '서브 메뉴 권한',
+	`SubCUserId` VARCHAR(20) NOT NULL COMMENT '서브 메뉴를 만든 사용자 ID',
+	`SubCDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '서브 메뉴 생성 시간 yyyy-mm-dd 00:00:00',
+	`SubMDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '서브 메뉴 수정 시간 yyyy-mm-dd 00:00:00',
+	PRIMARY KEY (`SubId`)
+)
+COMMENT='서브메뉴'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=3;
+
+CREATE TABLE `users` (
+	`UserId` VARCHAR(20) NOT NULL COMMENT '사용자 ID',
+	`UserPw` VARCHAR(255) NOT NULL COMMENT '사용자 비밀번호',
+	`UserName` VARCHAR(100) NOT NULL COMMENT '사용자 이름',
+	`UserEmail` VARCHAR(60) NULL DEFAULT NULL COMMENT '사용자 Email',
+	`UserZipCode` VARCHAR(6) NULL DEFAULT NULL COMMENT '사용자 우편번호',
+	`UserZipAddr` VARCHAR(255) NULL DEFAULT NULL COMMENT '사용자 주소',
+	`UserZipDetail` VARCHAR(100) NULL DEFAULT NULL COMMENT '사용자 상세주소',
+	`UserCdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '사용자 생성 시간 yyyy-mm-dd 00:00:00',
+	`UserMdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '사용자 정보 수정 시간 yyyy-mm-dd 00:00:00',
+	PRIMARY KEY (`UserId`)
+)
+COMMENT='사용자 정보 테이블'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
