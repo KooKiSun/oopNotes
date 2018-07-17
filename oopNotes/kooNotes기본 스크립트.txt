@@ -36,24 +36,9 @@ COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 AUTO_INCREMENT=4;
 
-
-CREATE TABLE `posts` (
-	`PostId` INT(11) NOT NULL AUTO_INCREMENT COMMENT '게시글 ID',
-	`PostSubId` INT(11) NOT NULL COMMENT '게시글이 속한 서브 메뉴 ID',
-	`PostUserId` VARCHAR(20) NOT NULL COMMENT '게시글 작성자 ID',
-	`PostTitle` VARCHAR(255) NOT NULL COMMENT '게시글 제목',
-	`PostContents` LONGTEXT NOT NULL COMMENT '게시글 내용',
-	`PostFileIds` INT(11) NULL DEFAULT NULL COMMENT '게시글에 저장한 파일들의 ID',
-	`PostCDate` DATETIME NOT NULL COMMENT '게시글 생성 시간 yyyy-mm-dd 00:00:00',
-	`PostMdate` DATETIME NOT NULL COMMENT '게시글 수정 시간 yyyy-mm-dd 00:00:00',
-	`PostPrivate` CHAR(1) NULL DEFAULT 'N' COMMENT '게시글 비공개 여부',
-	`PostPw` VARCHAR(255) NULL DEFAULT NULL COMMENT '비공개 게시글에 사용하는 비밀번호',
-	PRIMARY KEY (`PostId`)
-)
-COMMENT='게시글 정보 테이블'
-COLLATE='utf8_general_ci'
-ENGINE=InnoDB;
-
+insert into mainMenus(MenuName, MenuAuthority, MenuCUserId) Values('밤비의 일상', '구기선', 'spmlop');
+insert into mainMenus(MenuName, MenuAuthority, MenuCUserId) Values('반려견 정보', '구기선', 'spmlop');
+insert into mainMenus(MenuName, MenuAuthority, MenuCUserId) Values('테스트트트', '구기선', 'spmlop');
 
 CREATE TABLE `submenus` (
 	`MenuId` INT(11) NOT NULL COMMENT '메인 메뉴 ID',
@@ -70,6 +55,40 @@ COMMENT='서브메뉴'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 AUTO_INCREMENT=3;
+
+insert into subMenus(MenuId, SubName, SubAuthority, SubCUserId) Values(1, '밤비의 일기', '구기선', 'spmlop');
+insert into subMenus(MenuId, SubName, SubAuthority, SubCUserId) Values(1, '밤비의 일상', '구기선', 'spmlop');
+insert into subMenus(MenuId, SubName, SubAuthority, SubCUserId) Values(2, '요크셔테리어', '구기선', 'spmlop');
+insert into subMenus(MenuId, SubName, SubAuthority, SubCUserId) Values(3, '성경 타이핑', '구기선', 'spmlop');
+
+
+
+CREATE TABLE `posts` (
+	`PostId` INT(11) NOT NULL AUTO_INCREMENT COMMENT '게시글 ID',
+	`PostSubId` INT(11) NOT NULL COMMENT '게시글이 속한 서브 메뉴 ID',
+	`PostUserId` VARCHAR(20) NOT NULL COMMENT '게시글 작성자 ID',
+	`PostTitle` VARCHAR(255) NOT NULL COMMENT '게시글 제목',
+	`PostContents` LONGTEXT NOT NULL COMMENT '게시글 내용',
+	`PostFileIds` INT(11) NULL DEFAULT NULL COMMENT '게시글에 저장한 파일들의 ID',
+	`PostCDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '게시글 생성 시간 yyyy-mm-dd 00:00:00',
+	`PostMdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '게시글 수정 시간 yyyy-mm-dd 00:00:00',
+	`PostPrivate` CHAR(1) NULL DEFAULT 'N' COMMENT '게시글 비공개 여부',
+	`PostPw` VARCHAR(255) NULL DEFAULT NULL COMMENT '비공개 게시글에 사용하는 비밀번호',
+	PRIMARY KEY (`PostId`)
+)
+COMMENT='게시글 정보 테이블'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+insert into posts(PostSubId, PostUserId, PostTitle, PostContents, PostPrivate, PostPw)
+Values(1, 'spmlop', '밤비의 일상을 입력할 제목', '2018.07.17 밤비는 너무 졸려서 고개를 들었다가 떨궜다..', 'Y', '12345');
+
+insert into posts(PostSubId, PostUserId, PostTitle, PostContents, PostPrivate, PostPw)
+Values(1, 'spmlop', '밤비는 지금도 자고 있다.', '2018.07.17 밤비는 뇨냥제를 먹고 다시 잠들었다..', 'Y', '12345');
+
+Select *
+From posts
 
 CREATE TABLE `users` (
 	`UserId` VARCHAR(20) NOT NULL COMMENT '사용자 ID',
