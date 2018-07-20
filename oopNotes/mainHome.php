@@ -15,17 +15,18 @@ $Result = $DB->DBResult();
 while ($row = mysqli_fetch_array($Result)) {
   $MenuId = htmlspecialchars($row['MenuId']);
   $MenuName = htmlspecialchars($row['MenuName']);
-  $base->MHeaderList .= "<li><a href=\"mainSubList.php?MenuId={$row['MenuId']}&MenuName={$row['MenuName']}\">{$row['MenuName']} | </a></li>\n";
+  $base->MHeaderList .= "<li><a id=\"MenuId{$row['MenuId']}\" href=\"mainSubList.php?MenuId={$row['MenuId']}&MenuName={$row['MenuName']}\">{$row['MenuName']} | </a></li>\n";
   };
 
 if (isset($SubList)) {
   $base->MMenuName .= $SubMainMenuName; // 선택한 메뉴 명.
   $base->MSubList .= $SubList;
+} else {
+  $base->JScript .= "window.onload = function(){MenuId1.click();}\n";
 }
 
-if (isset($TTitle)) {
-  $base->contents .= $TTitle;//게시판 타이틀
-}
-
+// if (isset($TTitle)) {
+//   $base->contents .= $TTitle;//게시판 타이틀
+// }
 echo $base->Render(); //위의 변수들이 입력된 객체를 출력
 ?>
