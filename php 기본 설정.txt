@@ -1,6 +1,0 @@
-display_errors : on
-
-log_errors : on
-apache/logs/error¿¡ ÀúÀåµÊ
-
-error_reporting = -1
